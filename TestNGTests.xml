@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="24" name="Suite" parallel="classes">
+
+	<listeners>
+		<listener class-name="analyzer.Transformer"/>
+	</listeners>
+
+	<parameter name="gameUrl"
+		value="https://trixir.com/cybershieldtraining/"/>
+
+	<test thread-count="24" name="CHROME Tests" parallel="classes">
+		<parameter name="browser" value="Chrome"/>
+		<classes>
+			<class name="tests.sampletest" />
+		</classes>
+	</test>
+
+	<!-- <test thread-count="24" name="MOZILLA Tests" parallel="classes"> <parameter 
+		name="browser" value="Firefox"></parameter> <classes> <class name="tests.CybershieldTests" 
+		/> </classes> </test> -->
+</suite> <!-- Suite -->
