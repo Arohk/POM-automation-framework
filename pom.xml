@@ -57,6 +57,11 @@
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>3.0.0-M1</version>
             </plugin>
+            <plugin>
+                <groupId>testng</groupId>
+                <artifactId>maven-testng-plugin</artifactId>
+                <version>6.14.3</version>
+            </plugin>
         </plugins>
     </build>
 

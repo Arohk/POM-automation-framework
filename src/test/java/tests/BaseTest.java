@@ -9,18 +9,19 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
-import pages.BookOfKnowledgePage;
-import pages.MainPage;
-import pages.SettingsPage;
+
+import pages.HomePage;
 
 public class BaseTest {
 
     private WebDriver driver;
+    HomePage objHomePage;
 
-    MainPage objMainPage;
-    SettingsPage objSettingsPage;
-    BookOfKnowledgePage objBookOfKnowledgePage;
 
+    /**
+     * Set Up method that launches a browser instance with desired capabilities depending on the OS the script is run from.
+     * @param browser - Browser parameter that is defined in the TestNG xml file.
+     */
     @BeforeMethod
     @Parameters("browser")
     public void setUp(@Optional("Chrome") String browser) {
@@ -38,7 +39,6 @@ public class BaseTest {
 
             // add desired capabilities
             FirefoxOptions firefoxOptions = new FirefoxOptions();
-            firefoxOptions.addPreference("media.volume_scale", "0.0");
             firefoxOptions.addPreference("marionette.enabled", true);
             driver = new FirefoxDriver(firefoxOptions);
 
@@ -54,19 +54,18 @@ public class BaseTest {
 
             // add desired capabilities
             ChromeOptions options = new ChromeOptions();
-            options.addArguments("mute-audio");
             options.addArguments("disable-infobars");
 //            options.addArguments("--headless");
             driver = new ChromeDriver(options);
         }
 
-        // Create objects for the PageClasses, pass driver
-        objMainPage = new MainPage(driver);
-        objSettingsPage = new SettingsPage(driver);
-        objBookOfKnowledgePage = new BookOfKnowledgePage(driver);
-
+        // Create objects for the PageClasses, passes the driver
+        objHomePage = new HomePage(driver);
     }
 
+    /**
+     * Tear Down method to kill the driver's instance once a test is finished.
+     */
     @AfterMethod
     public void tearDown() {
         driver.quit();
