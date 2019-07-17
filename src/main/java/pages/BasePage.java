@@ -52,29 +52,12 @@ public class BasePage {
     // *********BasePage Methods*********
 
     /**
-     * Clicks an element with a default wait time of 40s.
+     * Clicks an element with a default wait time of 25s.
      *
      * @param element - Element to be clicked.
      */
     public void click(WebElement element) {
         wait.until(ExpectedConditions.elementToBeClickable(element)).click();
-    }
-
-    /**
-     * Clicks an element with a default wait time of 40s after it waits for another
-     * element to become clickable before that (usable for buttons with glow
-     * animations)
-     *
-     * @param elementToBeClickable - element, for which the method waits to be available.
-     * @param elementToBeClicked   - element, which is actually clicked after.
-     * @throws InterruptedException
-     */
-    public void clickGlow(WebElement elementToBeClickable, WebElement elementToBeClicked) throws InterruptedException {
-        Thread.sleep(1000);
-        wait.until(ExpectedConditions.elementToBeClickable(elementToBeClickable));
-        Thread.sleep(1000);
-        wait.until(ExpectedConditions.elementToBeClickable(elementToBeClicked)).click();
-        Thread.sleep(1000);
     }
 
     /**

@@ -3,7 +3,6 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class HomePage extends BasePage {
 
@@ -19,13 +18,19 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//div[@class='myaccount']/button[@class='menu button-myaccount userlogin']")
     WebElement sideMenuButton;
 
+    @FindBy(id = "imysearchstring")
+    WebElement searchBar;
+
+
     // ***Implementations***
 
-    public void LoginWithTestUser() {
-
+    public void LoginWithTestUserAndDoStuff() throws InterruptedException {
         setPosition(0, 0, 500, 500);
         navigateToUrl("https://www.takeaway.com/bg/");
-        click(sideMenuButton);
+        click(searchBar);
+        writeText(searchBar, "НДК София");
+        Thread.sleep(4500);
 
     }
+
 }
