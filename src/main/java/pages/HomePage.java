@@ -19,10 +19,6 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//div[@class=\"notice-container\"]/a[@id='privacybanner']")
     WebElement closeCookieNotice;
 
-    // Side menu button locator
-    @FindBy(xpath = "//div[@class='myaccount']/button[@class='menu button-myaccount userlogin']")
-    WebElement sideMenuButton;
-
     @FindBy(id = "imysearchstring")
     WebElement searchBar;
 
