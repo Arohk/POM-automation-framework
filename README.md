@@ -5,7 +5,7 @@
 	1. JDK 8
 3. Java IDE: Eclipse/IntelliJ IDEA under Win
 4. Version control: Git
-5. Git repository hosting service: Gitthub
+5. Git repository hosting service: Github
 6. Build tool: Maven
 	1. Included
 7. Software-testing framework: Selenium
