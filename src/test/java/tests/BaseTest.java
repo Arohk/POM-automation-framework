@@ -38,17 +38,13 @@ public class BaseTest {
             if (operatingSystem.startsWith("Windows")) {
                 System.setProperty("webdriver.gecko.driver", "Resources/geckodriver.exe");
             } else {
-                System.setProperty("Webdriver.gecko.driver", "Resources/Unix/geckodriver");
+                System.setProperty("webdriver.gecko.driver", "Resources/Unix/geckodriver");
             }
 
             // add desired capabilities
             FirefoxOptions firefoxOptions = new FirefoxOptions();
             firefoxOptions.addPreference("marionette.enabled", true);
-//            firefoxOptions.addPreference("dom.webnotifications.enabled", false);
             firefoxOptions.addPreference("geo.enabled", true);
-//            firefoxOptions.addPreference("geo.provider.use_corelocation", true);
-//            firefoxOptions.addPreference("geo.prompt.testing", false);
-//            firefoxOptions.addPreference("geo.prompt.testing.allow", false);
             driver = new FirefoxDriver(firefoxOptions);
 
 

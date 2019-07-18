@@ -19,7 +19,6 @@ public class BasePage {
 
     WebDriver driver;
     WebDriverWait wait;
-    WebDriverWait waitX;
     Actions actions;
     JavascriptExecutor executor;
 
@@ -39,7 +38,7 @@ public class BasePage {
 
     }
 
-    // *********BasePage Methods*********
+    // ***BasePage Methods***
 
     /**
      * Clicks an element with a default wait time of 25s.
@@ -52,16 +51,8 @@ public class BasePage {
 
 
     public void javaScriptExecutorInteraction(String javaScript, WebElement element) throws InterruptedException {
-        Thread.sleep(1500);
+        Thread.sleep(2500);
         executor.executeScript(javaScript, element);
-    }
-
-    /**
-     * Move to element with the Actions class
-     * @param element - Element to be interacted
-     */
-    public void moveToElementActions(WebElement element) {
-        actions.moveToElement(element).perform();
     }
 
     /**
