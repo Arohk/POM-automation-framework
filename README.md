@@ -21,7 +21,8 @@
 1. Install JDK 8 from https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 2. Install your preferred IDE.
 3. Import the project from your IDE File > Import > Projects from Git > Clone URI.
-4. Project is imported and ready for test. See the USAGE section for info on how to use it.
+4. Initialize pom.xml as a maven project and setup SDK to JDK 8 if needed.
+5. Project is imported and ready for test. See the USAGE section for info on how to use it.
 
 
 ## Purpose
