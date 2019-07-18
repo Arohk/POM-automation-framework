@@ -10,12 +10,16 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
+import pages.AddressPage;
 import pages.HomePage;
+import pages.RestaurantPage;
 
 public class BaseTest {
 
     private WebDriver driver;
     HomePage objHomePage;
+    RestaurantPage objRestaurantPage;
+    AddressPage objAddressPage;
 
 
     /**
@@ -40,7 +44,13 @@ public class BaseTest {
             // add desired capabilities
             FirefoxOptions firefoxOptions = new FirefoxOptions();
             firefoxOptions.addPreference("marionette.enabled", true);
+//            firefoxOptions.addPreference("dom.webnotifications.enabled", false);
+            firefoxOptions.addPreference("geo.enabled", true);
+//            firefoxOptions.addPreference("geo.provider.use_corelocation", true);
+//            firefoxOptions.addPreference("geo.prompt.testing", false);
+//            firefoxOptions.addPreference("geo.prompt.testing.allow", false);
             driver = new FirefoxDriver(firefoxOptions);
+
 
         } else if (browser.equalsIgnoreCase("chrome")) {
 
@@ -61,6 +71,8 @@ public class BaseTest {
 
         // Create objects for the PageClasses, passes the driver
         objHomePage = new HomePage(driver);
+        objRestaurantPage = new RestaurantPage(driver);
+        objAddressPage = new AddressPage(driver);
     }
 
     /**

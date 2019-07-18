@@ -18,14 +18,11 @@ import java.util.concurrent.TimeUnit;
 public class BasePage {
 
     WebDriver driver;
-
     WebDriverWait wait;
     WebDriverWait waitX;
-
     Actions actions;
     JavascriptExecutor executor;
 
-    // *********Constructor*********
     BasePage(WebDriver driver) {
 
         this.driver = driver;
@@ -42,13 +39,6 @@ public class BasePage {
 
     }
 
-    // Create object of SimpleDateFormat class and decide the format
-    DateFormat dateFormat = new SimpleDateFormat("ddMMHHmmss");
-    // get current date time with Date()
-    Date date = new Date();
-    // Now format the date
-    String currentDate = dateFormat.format(date);
-
     // *********BasePage Methods*********
 
     /**
@@ -60,43 +50,9 @@ public class BasePage {
         wait.until(ExpectedConditions.elementToBeClickable(element)).click();
     }
 
-    /**
-     * Tries to click an element for a custom period of time, returns a message if
-     * element is not found and continues the test.
-     *
-     * @param element              - Element to be clicked.
-     * @param secondsToWait        - Time available to try and click the element.
-     * @param conditionsNotMetText - Text message returned to console if the click is not successful.
-     */
-    public void clickTryCatch(WebElement element, int secondsToWait, String conditionsNotMetText) {
-        waitX = new WebDriverWait(this.driver, secondsToWait);
-        try {
-            waitX.until(ExpectedConditions.elementToBeClickable(element)).click();
-        } catch (Exception e) {
-            System.out.println(conditionsNotMetText);
-        }
-    }
 
-    /**
-     * Click an element surrounded with custom wait time and a custom Thread.sleep
-     * time.
-     *
-     * @param element                 - Element to be clicked.
-     * @param secondsToWait           - Time available for the click.
-     * @param threadSleepMilliseconds - Mandatory timeout before and after the click.
-     */
-    public void clickSleep(WebElement element, int secondsToWait, int threadSleepMilliseconds)
-            throws InterruptedException {
-//		executor.executeScript("arguments[0].setAttribute('style', 'border: 9px dashed #ff9999;');", element);
-        waitX = new WebDriverWait(driver, secondsToWait);
-        Thread.sleep(threadSleepMilliseconds);
-        waitX.until(ExpectedConditions.elementToBeClickable(element)).click();
-        Thread.sleep(threadSleepMilliseconds);
-
-
-    }
-
-    public void javaScriptExecutorInteraction(String javaScript, WebElement element) {
+    public void javaScriptExecutorInteraction(String javaScript, WebElement element) throws InterruptedException {
+        Thread.sleep(1500);
         executor.executeScript(javaScript, element);
     }
 
@@ -177,19 +133,6 @@ public class BasePage {
         Thread.sleep(1500);
         driver.switchTo().frame(frame);
         Thread.sleep(1500);
-    }
-
-    /**
-     * Custom asser that Asserts that an element contains the String of expectedText that is entered
-     * with the actual one found from "BasePage.java"->read text method.
-     *
-     * @param element      - Element, which text is to be returned by the read text method
-     *                     and asserted with the expected text.
-     * @param expectedText - Expected text that is to be found in the application.
-     */
-    public void assertText(WebElement element, String expectedText) {
-        wait.until(ExpectedConditions.visibilityOf(element));
-        Assert.assertEquals(readText(element), expectedText);
     }
 
     /**

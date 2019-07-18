@@ -9,14 +9,14 @@
     <test thread-count="24" name="CHROME Tests" parallel="classes">
         <parameter name="browser" value="Chrome"/>
         <classes>
-            <class name="tests.sampleTest"/>
+            <class name="tests.OrdersTestSuite"/>
         </classes>
     </test>
 
     <test thread-count="24" name="MOZILLA Tests" parallel="classes">
         <parameter name="browser" value="Firefox"/>
         <classes>
-            <class name="tests.sampleTest"/>
+            <class name="tests.OrdersTestSuite"/>
         </classes>
     </test>
 </suite> <!-- Suite -->
