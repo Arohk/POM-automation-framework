@@ -23,7 +23,7 @@ public class RestaurantPage extends BasePage {
     WebElement completeOrderButton;
 
 
-    // ***Implementations***
+    // ***Implementation***
 
     public void orderFromRestaurant() throws InterruptedException {
         javaScriptExecutorInteraction("arguments[0].click();", mealName);

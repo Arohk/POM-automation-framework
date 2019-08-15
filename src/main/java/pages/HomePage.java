@@ -28,7 +28,7 @@ public class HomePage extends BasePage {
     @FindBy(id = "irestaurantN7NQNOQ")
     WebElement otechestvoRestaurant;
 
-    // ***Implementations***
+    // ***Implementation***
 
     public void findRestaurant() throws InterruptedException {
         setPosition(0, 0, 1920, 1080);

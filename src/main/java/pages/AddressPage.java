@@ -1,8 +1,10 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -42,7 +44,7 @@ public class AddressPage extends BasePage {
     WebElement orderPurchaseId;
 
 
-    // ***Implementations***
+    // ***Implementation***
 
     public void completeOrder() throws InterruptedException {
 
@@ -64,12 +66,14 @@ public class AddressPage extends BasePage {
         clearText(phoneField);
         writeText(phoneField, readTextFromFile("Resources/StaticData/phone.txt"));
 
-        javaScriptExecutorInteraction("arguments[0].scrollIntoView(true);", submitOrderButton);
+//        Select the asap option for delivery
+        Select  deliveryDropDown = new Select(driver.findElement(By.id("ideliverytime")));
+        deliveryDropDown.selectByIndex(1);
 
+        javaScriptExecutorInteraction("arguments[0].scrollIntoView(true);", submitOrderButton);
         click(submitOrderButton);
 
         javaScriptExecutorInteraction("arguments[0].scrollIntoView(true);", orderPurchaseId);
-
         String orderID = orderPurchaseId.getText();
 
         System.out.println("Your order id is: " + orderID);
